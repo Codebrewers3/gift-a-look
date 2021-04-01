@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/dashboardFragment">
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.example.giftalook.Fragments.DashboardFragment"
+        android:label="fragment_dashboard"
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_dashboardFragment_to_allGroupsFragment"
+            app:destination="@id/allGroupsFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_starredOutfitsFragment"
+            app:destination="@id/starredOutfitsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/allGroupsFragment"
+        android:name="com.example.giftalook.Fragments.AllGroupsFragment"
+        android:label="fragment_all_groups"
+        tools:layout="@layout/fragment_all_groups" >
+        <action
+            android:id="@+id/action_allGroupsFragment_to_currentGroupFragment"
+            app:destination="@id/currentGroupFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/starredOutfitsFragment"
+        android:name="com.example.giftalook.Fragments.StarredOutfitsFragment"
+        android:label="fragment_starred_outfits"
+        tools:layout="@layout/fragment_starred_outfits" />
+    <fragment
+        android:id="@+id/outfitBoardFragment"
+        android:name="com.example.giftalook.Fragments.OutfitBoardFragment"
+        android:label="fragment_outfit_board"
+        tools:layout="@layout/fragment_outfit_board" >
+        <action
+            android:id="@+id/action_outfitBoardFragment_to_giftOutfitFragment"
+            app:destination="@id/giftOutfitFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/currentGroupFragment"
+        android:name="com.example.giftalook.Fragments.CurrentGroupFragment"
+        android:label="fragment_current_group"
+        tools:layout="@layout/fragment_current_group" >
+        <action
+            android:id="@+id/action_currentGroupFragment_to_outfitBoardFragment"
+            app:destination="@id/outfitBoardFragment" />
+        <action
+            android:id="@+id/action_currentGroupFragment_to_browseFragment"
+            app:destination="@id/browseFragment" />
+        <action
+            android:id="@+id/action_currentGroupFragment_to_groupChatFragment"
+            app:destination="@id/groupChatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/browseFragment"
+        android:name="com.example.giftalook.Fragments.BrowseFragment"
+        android:label="fragment_browse"
+        tools:layout="@layout/fragment_browse" />
+    <fragment
+        android:id="@+id/groupChatFragment"
+        android:name="com.example.giftalook.Fragments.GroupChatFragment"
+        android:label="fragment_group_chat"
+        tools:layout="@layout/fragment_group_chat" />
+    <fragment
+        android:id="@+id/giftOutfitFragment"
+        android:name="com.example.giftalook.Fragments.GiftOutfitFragment"
+        android:label="fragment_gift_outfit"
+        tools:layout="@layout/fragment_gift_outfit" />
+</navigation>
