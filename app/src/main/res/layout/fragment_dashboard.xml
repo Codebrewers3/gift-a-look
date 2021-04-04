@@ -10,11 +10,10 @@
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/colorPrimary"
         android:layout_above="@id/changed_boards_text_view"
-        android:layout_alignParentTop="true">
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary">
 
-        
 
     </GridLayout>
 
@@ -22,63 +21,63 @@
         android:id="@+id/changed_boards_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@id/profiles_linear_layout"
         android:layout_marginLeft="24dp"
         android:layout_marginTop="24dp"
         android:text="Look who changed their outfit board!"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
         android:textColor="@android:color/black"
-        android:layout_above="@id/profiles_linear_layout"
-        android:textStyle="bold"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"/>
+        android:textStyle="bold" />
 
     <LinearLayout
         android:id="@+id/profiles_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_above="@id/cards_linear_layout"
         android:layout_marginLeft="24dp"
         android:layout_marginRight="24dp"
-        android:layout_above="@id/cards_linear_layout">
+        android:orientation="horizontal">
 
         <ImageButton
-            android:backgroundTint="@color/colorPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_profile"/>
+            android:backgroundTint="@color/colorPrimary"
+            android:src="@drawable/ic_profile" />
 
         <ImageButton
-            android:backgroundTint="@color/colorPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_profile"/>
+            android:backgroundTint="@color/colorPrimary"
+            android:src="@drawable/ic_profile" />
 
         <ImageButton
-            android:backgroundTint="@color/colorPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_profile"/>
+            android:backgroundTint="@color/colorPrimary"
+            android:src="@drawable/ic_profile" />
 
         <ImageButton
-            android:backgroundTint="@color/colorPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_profile"/>
+            android:backgroundTint="@color/colorPrimary"
+            android:src="@drawable/ic_profile" />
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/cards_linear_layout"
         android:layout_width="match_parent"
-        android:layout_above="@id/bottom_nav"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:background="@color/colorAccent"
             android:layout_margin="24dp"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:orientation="vertical"
             android:padding="24dp">
 
             <ImageView
@@ -90,23 +89,23 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="My Groups"
                 android:gravity="center"
+                android:text="My Groups"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
                 android:textColor="@color/white"
-                android:textStyle="bold"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"/>
+                android:textStyle="bold" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:background="@color/colorAccent"
             android:layout_marginTop="24dp"
-            android:layout_marginBottom="24dp"
             android:layout_marginRight="24dp"
+            android:layout_marginBottom="24dp"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:orientation="vertical"
             android:padding="24dp">
 
             <ImageView
@@ -117,27 +116,15 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Starred Outfits"
                 android:gravity="center"
+                android:text="Starred Outfits"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
                 android:textColor="@color/white"
-                android:textStyle="bold"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"/>
+                android:textStyle="bold" />
 
         </LinearLayout>
 
 
     </LinearLayout>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_nav"
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:layout_alignParentBottom="true"
-        android:background="@color/colorPrimaryDark"
-        app:itemIconSize="40dp"
-        app:itemIconTint="@color/bottom_nav_color"
-        app:itemRippleColor="@color/colorSecondary"
-        app:itemTextColor="@color/bottom_nav_color"
-        app:menu="@menu/menu_bottom_nav" />
 
 </RelativeLayout>
