@@ -64,7 +64,11 @@
         android:id="@+id/browseFragment"
         android:name="com.example.giftalook.Fragments.BrowseFragment"
         android:label="fragment_browse"
-        tools:layout="@layout/fragment_browse" />
+        tools:layout="@layout/fragment_browse" >
+        <action
+            android:id="@+id/action_browseFragment_to_outfitBoardFragment"
+            app:destination="@id/outfitBoardFragment" />
+    </fragment>
     <fragment
         android:id="@+id/groupChatFragment"
         android:name="com.example.giftalook.Fragments.GroupChatFragment"
