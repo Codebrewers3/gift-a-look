@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1028280138415",
+    "project_id": "gift-a-look-app",
+    "storage_bucket": "gift-a-look-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1028280138415:android:8e27d9a3f204ad96aa325a",
+        "android_client_info": {
+          "package_name": "com.example.giftalook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1028280138415-11csntgdkfgrte21muv78d1bdksuolgi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.giftalook",
+            "certificate_hash": "8026095341be1da0b8290108eaa0405b2a234de1"
+          }
+        },
+        {
+          "client_id": "1028280138415-98a3t5j8vnc4ccvgbfhg2ra5sptluusb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9-UWXD-n1VdF0OJX_65kuzBKQb8mqzss"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1028280138415-98a3t5j8vnc4ccvgbfhg2ra5sptluusb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

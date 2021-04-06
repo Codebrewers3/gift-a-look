@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    id 'com.google.gms.google-services'  // Google Services plugin
 }
 
 android {
@@ -62,4 +63,23 @@ dependencies {
 
     /* For CardView */
     implementation "androidx.cardview:cardview:1.0.0"
+
+    // To import the Firebase BoM
+    implementation platform('com.google.firebase:firebase-bom:26.8.0')
+
+    // Declaring dependency for the Firebase SDK for Google Analytics
+    implementation 'com.google.firebase:firebase-analytics'
+
+    //Authentication via Firebase
+    implementation 'com.google.firebase:firebase-auth:20.0.3'
+
+    //For in-app messaging and its display
+    implementation 'com.google.firebase:firebase-inappmessaging:19.1.5'
+    implementation 'com.google.firebase:firebase-inappmessaging-display:19.1.5'
+
+    //For Cloud Firestore
+    implementation 'com.google.firebase:firebase-firestore:22.1.2'
+
+    //For Realtime Database
+    implementation 'com.google.firebase:firebase-database:19.7.0'
 }
