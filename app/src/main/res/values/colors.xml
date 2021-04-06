@@ -16,4 +16,5 @@
     <color name="colorSecondaryVariant">#b42e00</color>
     <color name="colorOnSecondary">@color/black</color>
     <color name="colorAccent">#ffd600</color>
+    <color name="hintRed">#CD5C5C</color>
 </resources>
