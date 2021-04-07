@@ -10,9 +10,6 @@
         android:label="fragment_dashboard"
         tools:layout="@layout/fragment_dashboard" >
         <action
-            android:id="@+id/action_dashboardFragment_to_allGroupsFragment"
-            app:destination="@id/allGroupsFragment" />
-        <action
             android:id="@+id/action_dashboardFragment_to_starredOutfitsFragment"
             app:destination="@id/starredOutfitsFragment" />
         <action
@@ -24,14 +21,8 @@
         <action
             android:id="@+id/action_dashboardFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/allGroupsFragment"
-        android:name="com.example.giftalook.Fragments.AllGroupsFragment"
-        android:label="fragment_all_groups"
-        tools:layout="@layout/fragment_all_groups" >
         <action
-            android:id="@+id/action_allGroupsFragment_to_currentGroupFragment"
+            android:id="@+id/action_dashboardFragment_to_currentGroupFragment"
             app:destination="@id/currentGroupFragment" />
     </fragment>
     <fragment
@@ -62,6 +53,9 @@
         <action
             android:id="@+id/action_currentGroupFragment_to_groupChatFragment"
             app:destination="@id/groupChatFragment" />
+        <action
+            android:id="@+id/action_currentGroupFragment_to_giftingOutfitBoardFragment"
+            app:destination="@id/giftingOutfitBoardFragment" />
     </fragment>
     <fragment
         android:id="@+id/browseFragment"
@@ -108,4 +102,9 @@
             android:id="@+id/action_signUpFragment_to_dashboardFragment"
             app:destination="@id/dashboardFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/giftingOutfitBoardFragment"
+        android:name="com.example.giftalook.Fragments.GiftingOutfitBoardFragment"
+        android:label="fragment_gifting_outfit_board"
+        tools:layout="@layout/fragment_gifting_outfit_board" />
 </navigation>

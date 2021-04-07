@@ -7,6 +7,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,6 +28,9 @@ import com.example.giftalook.databinding.FragmentBrowseBinding;
 import com.example.giftalook.databinding.FragmentOutfitBoardBinding;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +44,9 @@ public class OutfitBoardFragment extends Fragment {
     private PersonalOutfitBoardViewModel productViewModel;
     private OutfitBoardAdapter outfitBoardAdapter;
     private ProductViewModel browseProductViewModel;
+    private DatabaseReference mRootRef;
+    private NavController navController;
+    private boolean swipeStatus = false;
 
     public OutfitBoardFragment() {
         // Required empty public constructor
@@ -62,11 +70,14 @@ public class OutfitBoardFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         browseProductViewModel = new ViewModelProvider(getActivity()).get(ProductViewModel.class);
+        navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+        mRootRef = FirebaseDatabase.getInstance().getReference();
         productViewModel = new ViewModelProvider(getActivity()).get(PersonalOutfitBoardViewModel.class);
         productViewModel.getAllProducts().observe(getViewLifecycleOwner(), new Observer<List<OutfitBoardProduct>>() {
             @Override
             public void onChanged(List<OutfitBoardProduct> products) {
                 mProducts = (ArrayList<OutfitBoardProduct>) products;
+                mRootRef.child("Users").child(FirebaseAuth.getInstance().getUid()).child("myProducts").setValue(mProducts);
                 outfitBoardAdapter = new OutfitBoardAdapter(mProducts);
                 mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
                 mRecyclerView.setAdapter(outfitBoardAdapter);
@@ -77,11 +88,13 @@ public class OutfitBoardFragment extends Fragment {
                 ItemTouchHelper.RIGHT | ItemTouchHelper.LEFT) {
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+
                 return false;
             }
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                swipeStatus = true;
                 int position = viewHolder.getAdapterPosition();
                 OutfitBoardProduct product = outfitBoardAdapter.getProductAt(position);
 
@@ -105,6 +118,28 @@ public class OutfitBoardFragment extends Fragment {
         };
         ItemTouchHelper touchHelper = new ItemTouchHelper(simpleItemTouchCallback);
         touchHelper.attachToRecyclerView(mRecyclerView);
+
+        ItemTouchHelper.Callback callback = new ItemTouchHelper.Callback() {
+            @Override
+            public int getMovementFlags(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder) {
+                if(!swipeStatus)
+                    navController.navigate(R.id.action_outfitBoardFragment_to_giftOutfitFragment);
+                swipeStatus = false; 
+                return 0;
+            }
+
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+
+            }
+        };
+        ItemTouchHelper callbackTouchHelper = new ItemTouchHelper(callback);
+        callbackTouchHelper.attachToRecyclerView(mRecyclerView);
 
     }
 }

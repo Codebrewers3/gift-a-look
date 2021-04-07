@@ -21,12 +21,18 @@ import com.example.giftalook.R;
 import com.example.giftalook.databinding.FragmentDashboardBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class DashboardFragment extends Fragment {
 
     private FragmentDashboardBinding dashboardBinding;
     private FirebaseAuth mAuth;
     private NavController navController;
+    private DatabaseReference mRootRef;
 
     public DashboardFragment() {
         // Required empty public constructor
@@ -36,7 +42,6 @@ public class DashboardFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
-
     }
 
     @Override
@@ -78,6 +83,14 @@ public class DashboardFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        mRootRef = FirebaseDatabase.getInstance().getReference();
+        navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+        dashboardBinding.myGroupsLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(R.id.action_dashboardFragment_to_currentGroupFragment);
+            }
+        });
 
     }
 }

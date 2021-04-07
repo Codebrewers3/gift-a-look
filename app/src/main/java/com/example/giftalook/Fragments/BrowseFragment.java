@@ -38,6 +38,9 @@ import com.example.giftalook.databinding.FragmentBrowseBinding;
 import com.example.giftalook.databinding.FragmentDashboardBinding;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
