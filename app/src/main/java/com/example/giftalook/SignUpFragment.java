@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.giftalook.Model.User;
 import com.example.giftalook.databinding.FragmentBrowseBinding;
 import com.example.giftalook.databinding.FragmentLoginBinding;
 import com.example.giftalook.databinding.FragmentSignUpBinding;
@@ -61,33 +62,18 @@ public class SignUpFragment extends Fragment {
             @Override
             public void onSuccess(AuthResult authResult) {
 
-                HashMap<String, Object> map = new HashMap<>();
-                map.put("email", txtEmail);
-                map.put("username", txtUsername);
-                map.put("id", mAuth.getCurrentUser().getUid());
-                map.put("bio", "");
-                map.put("imageurl", "default");
+                User newUser = new User(txtUsername, txtEmail, mAuth.getCurrentUser().getUid(), "", "default");
 
-                Log.d("SignUpFragment.java", "Sign-up is successful");
-                navController.navigate(R.id.action_signUpFragment_to_dashboardFragment);
-
-                Snackbar.make(signUpBinding.signupLinearLayout, "Sign-up successful!", Snackbar.LENGTH_SHORT)
-                        .setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE)
-                        .setTextColor(getResources().getColor(R.color.bottom_nav_color))
-                        .show();
-
-
-
-                mRootRef.child("Users").child(mAuth.getCurrentUser().getUid()).setValue(map).addOnCompleteListener(getActivity(), new OnCompleteListener<Void>() {
+                mRootRef.child("Users").child(mAuth.getCurrentUser().getUid()).setValue(newUser).addOnCompleteListener(getActivity(), new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Log.d("SignUpFragment.java", "Sign-up is successful");
-                            Toast.makeText(getActivity(), "Registration successful", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getContext(), MainActivity.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(intent);
-                            getActivity().finish();
+                            Snackbar.make(signUpBinding.signupLinearLayout, "Sign-up successful!", Snackbar.LENGTH_SHORT)
+                                    .setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE)
+                                    .setTextColor(getResources().getColor(R.color.bottom_nav_color))
+                                    .show();
+                            navController.navigate(R.id.action_signUpFragment_to_dashboardFragment);
                         }
                     }
                 });

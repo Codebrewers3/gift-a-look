@@ -50,6 +50,7 @@ public class LoginFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        mAuth = FirebaseAuth.getInstance();
 
     }
 
