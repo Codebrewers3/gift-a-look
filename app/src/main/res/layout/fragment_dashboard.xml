@@ -7,27 +7,22 @@
     android:orientation="vertical"
     tools:context=".Fragments.DashboardFragment">
 
-    <GridLayout
+
+    <com.synnapps.carouselview.CarouselView
+        android:id="@+id/carouselView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_above="@id/changed_boards_text_view"
         android:layout_alignParentTop="true"
-        android:background="@color/colorPrimary">
-
-
-    </GridLayout>
-
-    <TextView
-        android:id="@+id/changed_boards_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/profiles_linear_layout"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="24dp"
-        android:text="Look who changed their outfit board!"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-        android:textColor="@android:color/black"
-        android:textStyle="bold" />
+        android:padding="16dp"
+        app:fillColor="#FFFFFFFF"
+        app:pageColor="#00000000"
+        app:radius="6dp"
+        app:slideInterval="3000"
+        app:strokeColor="#FF777777"
+        app:strokeWidth="1dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@id/profiles_linear_layout"/>
 
     <LinearLayout
         android:id="@+id/profiles_linear_layout"
@@ -39,24 +34,42 @@
         android:orientation="horizontal">
 
         <ImageButton
+            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorPrimary"
             android:src="@drawable/ic_profile" />
 
         <ImageButton
+            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorPrimary"
             android:src="@drawable/ic_profile" />
 
         <ImageButton
+            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorPrimary"
             android:src="@drawable/ic_profile" />
 
         <ImageButton
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorPrimary"
+            android:src="@drawable/ic_profile" />
+
+        <ImageButton
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorPrimary"
+            android:src="@drawable/ic_profile" />
+
+        <ImageButton
+            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorPrimary"

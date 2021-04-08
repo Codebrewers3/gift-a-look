@@ -15,6 +15,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.example.giftalook.MainActivity;
 import com.example.giftalook.R;
@@ -26,6 +27,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.synnapps.carouselview.CarouselView;
+import com.synnapps.carouselview.ImageListener;
 
 public class DashboardFragment extends Fragment {
 
@@ -33,6 +36,9 @@ public class DashboardFragment extends Fragment {
     private FirebaseAuth mAuth;
     private NavController navController;
     private DatabaseReference mRootRef;
+    private CarouselView carouselView;
+
+    int[] sampleImages = {R.drawable.ic_dress, R.drawable.ic_jeans, R.drawable.ic_trench_coat, R.drawable.ic_jewellery_set, R.drawable.ic_red_jacket};
 
     public DashboardFragment() {
         // Required empty public constructor
@@ -52,6 +58,21 @@ public class DashboardFragment extends Fragment {
         return dashboardBinding.getRoot();
 
 
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        carouselView = dashboardBinding.carouselView;
+
+        carouselView.setImageListener(new ImageListener() {
+            @Override
+            public void setImageForPosition(int position, ImageView imageView) {
+                imageView.setImageResource(sampleImages[position]);
+            }
+        });
+
+        carouselView.setPageCount(sampleImages.length);
     }
 
     @Override

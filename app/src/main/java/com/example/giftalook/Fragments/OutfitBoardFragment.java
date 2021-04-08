@@ -122,8 +122,22 @@ public class OutfitBoardFragment extends Fragment {
         ItemTouchHelper.Callback callback = new ItemTouchHelper.Callback() {
             @Override
             public int getMovementFlags(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder) {
-                if(!swipeStatus)
-                    navController.navigate(R.id.action_outfitBoardFragment_to_giftOutfitFragment);
+                if(!swipeStatus) {
+                    int position = viewHolder.getAdapterPosition();
+                    OutfitBoardProduct product = outfitBoardAdapter.getProductAt(position);
+                    GiftOutfitFragment giftOutfitFragment = new GiftOutfitFragment();
+                    Bundle outfitInfo = new Bundle();
+                    outfitInfo.putString("Title", product.getProductName());
+                    outfitInfo.putString("Brand", product.getProductBrand());
+                    outfitInfo.putString("Image", product.getProductImageUri());
+                    outfitInfo.putString("Cost", product.getProductCost() + "");
+                    outfitInfo.putString("Description", product.getProductDescription());
+                    giftOutfitFragment.setArguments(outfitInfo);
+
+                    getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new OutfitBoardFragment(), "backStack");
+                    mRecyclerView.setVisibility(View.INVISIBLE);
+                    getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, giftOutfitFragment, null).addToBackStack("backStack").commit();
+                }
                 swipeStatus = false; 
                 return 0;
             }
