@@ -3,6 +3,8 @@ package com.example.giftalook.Fragments;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -48,6 +50,7 @@ public class GiftOutfitFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Gift a Look");
         giftOutfitBinding.introTextView.setText("Make someone's day, gift this look today!");
         giftOutfitBinding.productTitleTextview.setText(title);
         giftOutfitBinding.productBrandTextview.setText(brandName);
@@ -55,5 +58,5 @@ public class GiftOutfitFragment extends Fragment {
         giftOutfitBinding.productCostTextview.setText("Rs. " + cost);
         giftOutfitBinding.productDescriptionTextview.setText(description);
     }
-    
+
 }

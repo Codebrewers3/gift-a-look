@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -90,6 +91,7 @@ public class BrowseFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Browse");
         outfitBoardViewModel = new ViewModelProvider(getActivity()).get(PersonalOutfitBoardViewModel.class);
         productViewModel = new ViewModelProvider(getActivity()).get(ProductViewModel.class);
         productViewModel.getAllProducts().observe(getViewLifecycleOwner(), new Observer<List<Product>>() {
